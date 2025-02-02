@@ -5,6 +5,13 @@ function lenis() {
     smooth: true,
   });
 
+  let backToUp = document.querySelector(".page1 .circle");
+  backToUp.addEventListener("click", function () {
+    lenis.scrollTo(0, {
+      duration: 3.5,
+    });
+  });
+
   lenis.on("scroll", ScrollTrigger.update);
 
   gsap.ticker.add((time) => {
@@ -21,7 +28,7 @@ gsap.from(".page3 .top .elem h1", {
   scrollTrigger: {
     trigger: "#page2",
     scroller: "body",
-    start: "bottom 60%",
+    start: "bottom 68%",
     end: "bottom 86%",
     // markers: true,
     scrub: 2,
@@ -47,7 +54,7 @@ gsap.from(".loader .bar h1", {
 function loader() {
   let bar = document.querySelectorAll(".loader .lbar");
   let loader = document.querySelectorAll(".loader");
-  
+
   gsap.to(bar, {
     y: "-100%",
     duration: 0.5,
@@ -106,102 +113,130 @@ function TextReaveal() {
   });
 }
 
-var tl = gsap.timeline()
+function tl() {
+  var tl = gsap.timeline();
 
-tl.from("nav .brandname img", {
-  y:10,
-  stagger:0.06,
-  opacity:0,
-  duration:.4,
-  delay:3.7
-})
+  tl.from("nav .brandname img", {
+    y: 10,
+    stagger: 0.06,
+    opacity: 0,
+    duration: 0.4,
+    delay:3.2,
+  });
 
-tl.from("nav .brandname .name", {
-  y:10,
-  stagger:0.06,
-  opacity:0,
-  duration:.4,
-})
+  tl.from(".backtoup", {
+    y: 10,
+    stagger: 0.06,
+    opacity: 0,
+    duration: 0.4,
+  });
 
-tl.from("nav a", {
-  y:10,
-  stagger:0.06,
-  opacity:0,
-  duration:.4,
+  tl.from("nav .brandname .name", {
+    y: 10,
+    stagger: 0.06,
+    opacity: 0,
+    duration: 0.4,
+  });
 
-})
+  tl.from("nav a", {
+    y: 10,
+    stagger: 0.06,
+    opacity: 0,
+    duration: 0.4,
+  });
 
-tl.from(".page1 .bgfont h1 span", {
-  y:530,
-  stagger:0.06,
-  opacity:0,
-  duration:.4,
-  delay:0
-})
+  tl.from(".page1 .bgfont h1 span", {
+    y: 530,
+    stagger: 0.05,
+    opacity: 0,
+    duration: 0.5,
+    delay: 0,
+  });
 
+  tl.from(".page1 .bgfont .circle", {
+    // y: -1030,
+    opacity: 0,
+    duration: 1.4,
+    ease: "bounce.out(1.2)",
+  });
+}
+
+function tl1() {
+  var tl1 = gsap.timeline();
+
+  tl1.from(".whyus .top", {
+    y: 200,
+    stagger: 0.2,
+    scrollTrigger: {
+      trigger: ".whyus .top",
+      scroll: "body",
+      // markers:true,
+      start: "top 98%",
+      end: "top 50%",
+      scrub: true,
+    },
+  });
+
+  tl1.from(".whyus .top p", {
+    y: 100,
+    stagger: 0.2,
+    scrollTrigger: {
+      trigger: ".whyus .top p",
+      scroll: "body",
+      // markers:true,
+      start: "top 120%",
+      end: "top 70%",
+      scrub: true,
+    },
+  });
+
+  tl1.from(".whyuscont .cont", {
+    y: 340,
+    stagger: 0.9,
+    duration: 6,
+    scrollTrigger: {
+      trigger: ".whyuscont .cont",
+      scroll: "body",
+      // markers:true,
+      start: "top 130%",
+      end: "top 40%",
+      scrub: true,
+    },
+  });
+}
 
 gsap.from(".page2 img", {
   scale: 0,
   rotate: 360,
   duration: 2,
-  scrollTrigger:{
-    trigger:".page2 img",
-    scroll:"body",
+  scrollTrigger: {
+    trigger: ".page2 img",
+    scroll: "body",
     // markers:true,
-    start:"top 86%",
-    end:"top 50%",
-    scrub:true,
-  }
-})
+    start: "top 86%",
+    end: "top 50%",
+    scrub: true,
+  },
+});
 
-
-var tl1 = gsap.timeline()
-
-tl1.from(".whyus .top",{
-  y:200,
-  stagger:0.2,
-  scrollTrigger:{
-    trigger:".whyus .top",
-    scroll:"body",
-    // markers:true,
-    start:"top 98%",
-    end:"top 50%",
-    scrub:true,
-  }
-})
-
-tl1.from(".whyus .top p",{
-  y:100,
-  stagger:0.2,
-  scrollTrigger:{
-    trigger:".whyus .top p",
-    scroll:"body",
-    // markers:true,
-    start:"top 120%",
-    end:"top 70%",
-    scrub:true,
-  }
-})
-
-tl1.from(".whyuscont .cont",{
-  y:340,
-  stagger:0.8,
-  duration:2,
-  scrollTrigger:{
-    trigger:".whyuscont .cont",
-    scroll:"body",
-    // markers:true,
-    start:"top 180%",
-    end:"top 80%",
-    scrub:true,
-  }
-})
-
-
+gsap.to(".page1 .circle", {
+  y: 100,
+  x: 280,
+  scale: 0.6,
+  stagger: 0.2,
+  duration: 5.4,
+  scrollTrigger: {
+    trigger: ".backtoup",
+    scroll: "main",
+    start: "bottom 94%",
+    end: "top -100%",
+    scrub: true,
+  },
+});
 
 lenis();
 cursor();
 loader();
 TextReaveal();
-
-
+tl();
+tl1();
